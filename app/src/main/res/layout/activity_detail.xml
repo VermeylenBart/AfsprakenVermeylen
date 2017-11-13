@@ -26,20 +26,46 @@
         android:textStyle="bold"
         android:layout_marginBottom="25dp"/>
 
-    <TextView
-        android:id="@+id/textTime"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
-        android:layout_marginLeft="25dp"/>
+        android:orientation="horizontal"
+        android:layout_marginLeft="25dp">
 
-    <TextView
-        android:id="@+id/textLocation"
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/clock_icon"
+            android:layout_marginRight="5dp"/>
+
+        <TextView
+            android:id="@+id/textTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
+        android:orientation="horizontal"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/location_icon"
+            android:layout_marginRight="5dp"/>
+
+        <TextView
+            android:id="@+id/textLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"/>
+    </LinearLayout>
+
 
     <TextView
         android:layout_width="match_parent"

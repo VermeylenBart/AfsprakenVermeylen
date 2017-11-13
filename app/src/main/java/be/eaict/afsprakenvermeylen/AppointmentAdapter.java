@@ -6,9 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,6 +13,8 @@ import java.util.List;
  */
 
 public class AppointmentAdapter extends ArrayAdapter<Appointment> {
+
+
 
     public AppointmentAdapter(Context context, List<Appointment> list) {
         super(context, -1, list);
@@ -25,19 +24,20 @@ public class AppointmentAdapter extends ArrayAdapter<Appointment> {
     public View getView(int position, View convertView, ViewGroup parent){
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.activity_list_items, null);
+        DateFormater Date = new DateFormater(getItem(position).getTime());
 
         TextView textDate = (TextView) view.findViewById(R.id.listDate);
-        textDate.setText(dateFormat(getItem(position).getTime(),"dd/MM/yyyy"));
+        textDate.setText(Date.getDateFormat("dd/MM/yyyy"));
 
-        TextView textDoctor = (TextView) view.findViewById(R.id.listInfo);
+        TextView textTime = (TextView) view.findViewById(R.id.listTime);
+        textTime.setText(Date.getDateFormat("HH:mm"));
+
+        TextView textDoctor = (TextView) view.findViewById(R.id.listDoctor);
         textDoctor.setText(getItem(position).getContactName());
 
-        return view;
-    }
+        TextView textLocation = (TextView) view.findViewById(R.id.listLocation);
+        textLocation.setText(getItem(position).getLocation());
 
-    private String dateFormat(long timeStamp, String formatDate){
-        SimpleDateFormat sdf = new SimpleDateFormat(formatDate);
-        Date resultdate = new Date(timeStamp);
-        return sdf.format(resultdate);
+        return view;
     }
 }

@@ -18,18 +18,20 @@ public class NextAppointment {
     private long Low = Long.MAX_VALUE;
     private int LowId = 0;
 
+    private DateFormater Date;
+
     String getNextAppointment(){
         for (int i = 0; i < this.appointments.size(); i++){
             if (appointments.get(i).getTime() > System.currentTimeMillis()){
                 if (Low > appointments.get(i).getTime()){
                     Low = appointments.get(i).getTime();
-                    LowId = appointments.get(i).getId();
+                    LowId = appointments.get(i).getId() - 1;
+                    Date = new DateFormater(appointments.get(LowId).getTime());
                 }
             }
         }
         return ("Your next appointment is with " + appointments.get(LowId).getContactName() +
-                " at " + appointments.get(LowId).getDay() + "/" + appointments.get(LowId).getMonth() +
-                " " + appointments.get(LowId).getHour() + ":"+ + appointments.get(LowId).getMinute());
+                " at " + Date.getDateFormat("d/M H:mm"));
     }
 
     public int getLowId() {return LowId;}
