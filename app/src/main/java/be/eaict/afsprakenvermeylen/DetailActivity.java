@@ -17,15 +17,13 @@ public class DetailActivity extends AppCompatActivity {
         List<Appointment> appointments = _Appointments.getAppointments();
         int Position = getIntent().getIntExtra("Position", 0);
 
+        DateFormater Date = new DateFormater(appointments.get(Position).getTime());
+
         TextView textDoctor = (TextView) findViewById(R.id.textDoctor);
         textDoctor.setText(appointments.get(Position).getContactName());
 
-        String Time = appointments.get(Position).getDay() + "/" + appointments.get(Position).getMonth() +
-                "/" + appointments.get(Position).getYear() + " " + appointments.get(Position).getHour() +
-                ":" + appointments.get(Position).getMinute();
-
         TextView textTime = (TextView) findViewById(R.id.textTime);
-        textTime.setText(Time);
+        textTime.setText(Date.getDateFormat("d/M/yyyy HH:mm"));
 
         TextView textLocation = (TextView) findViewById(R.id.textLocation);
         textLocation.setText(appointments.get(Position).getLocation());
