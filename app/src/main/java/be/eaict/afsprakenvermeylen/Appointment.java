@@ -33,7 +33,7 @@ public class Appointment {
 
     public long getTime() {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(this.year, this.month, this.day, this.hour, this.minute);
+        calendar.set(this.year, this.month - 1, this.day, this.hour, this.minute);
         return calendar.getTimeInMillis();
     }
 

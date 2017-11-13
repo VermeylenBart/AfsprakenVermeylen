@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,11 +27,17 @@ public class AppointmentAdapter extends ArrayAdapter<Appointment> {
         View view = inflater.inflate(R.layout.activity_list_items, null);
 
         TextView textDate = (TextView) view.findViewById(R.id.listDate);
-        textDate.setText(getItem(position).getDay() + "/");
+        textDate.setText(dateFormat(getItem(position).getTime(),"dd/MM/yyyy"));
 
         TextView textDoctor = (TextView) view.findViewById(R.id.listInfo);
         textDoctor.setText(getItem(position).getContactName());
 
         return view;
+    }
+
+    private String dateFormat(long timeStamp, String formatDate){
+        SimpleDateFormat sdf = new SimpleDateFormat(formatDate);
+        Date resultdate = new Date(timeStamp);
+        return sdf.format(resultdate);
     }
 }
