@@ -20,7 +20,15 @@ public class DetailActivity extends AppCompatActivity {
         List<Appointment> appointments = _Appointments.getAppointments();
         int Position = getIntent().getIntExtra("Position", 0);
 
+        ContactRepository _Contacts = new ContactRepository();
+        List<Contact> contacts = _Contacts.getContacts();
+        int Image = R.drawable.clock_icon;
 
+        for (int i = 0; i < contacts.size(); i++) {
+            if (appointments.get(Position).getContactName() == contacts.get(i).getContactName()){
+                Image = contacts.get(i).getContactImage();
+            }
+        }
 
         DateFormater Date = new DateFormater(appointments.get(Position).getTime());
 
@@ -36,6 +44,7 @@ public class DetailActivity extends AppCompatActivity {
         TextView textReason = (TextView) findViewById(R.id.textReason);
         textReason.setText(appointments.get(Position).getReason());
 
-
+        ImageView imagePerson = (ImageView) findViewById(R.id.detailFace);
+        imagePerson.setImageResource(Image);
     }
 }
