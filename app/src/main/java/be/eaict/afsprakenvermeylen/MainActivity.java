@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         List<Appointment> appointments = (new AppointmentDummyRepository()).getAppointments();
-        //AppointmentDummyRepository _Appointments = new AppointmentDummyRepository();
         final NextAppointment nextAppointmentData = new NextAppointment(appointments);
 
         TextView nextAppointment = (TextView) findViewById(R.id.nextAppointment);

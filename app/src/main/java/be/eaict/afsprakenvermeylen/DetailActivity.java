@@ -1,7 +1,10 @@
 package be.eaict.afsprakenvermeylen;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,8 +17,8 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        List<Appointment> appointments = (new AppointmentDummyRepository()).getAppointments();
-        int Position = getIntent().getIntExtra("Position", 0);
+        final List<Appointment> appointments = (new AppointmentDummyRepository()).getAppointments();
+        final int Position = getIntent().getIntExtra("Position", 0);
 
         ContactRepository _Contacts = new ContactRepository();
 
@@ -27,6 +30,16 @@ public class DetailActivity extends AppCompatActivity {
 
         TextView textLocation = (TextView) findViewById(R.id.textLocation);
         textLocation.setText(appointments.get(Position).getLocation());
+
+        textLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + (appointments.get(Position).getLocation()).replaceAll("[0-9.]", ""));
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent);
+            }
+        });
 
         TextView textReason = (TextView) findViewById(R.id.textReason);
         textReason.setText(appointments.get(Position).getReason());
