@@ -24,13 +24,12 @@ public class AppointmentAdapter extends ArrayAdapter<Appointment> {
     public View getView(int position, View convertView, ViewGroup parent){
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.activity_list_items, null);
-        DateFormater Date = new DateFormater(getItem(position).getTime());
 
         TextView textDate = (TextView) view.findViewById(R.id.listDate);
-        textDate.setText(Date.getDateFormat("dd/MM/yyyy"));
+        textDate.setText(getItem(position).getFormatedTIme("dd/MM/yyyy"));
 
         TextView textTime = (TextView) view.findViewById(R.id.listTime);
-        textTime.setText(Date.getDateFormat("HH:mm"));
+        textTime.setText(getItem(position).getFormatedTIme("HH:mm"));
 
         TextView textDoctor = (TextView) view.findViewById(R.id.listDoctor);
         textDoctor.setText(getItem(position).getContactName());

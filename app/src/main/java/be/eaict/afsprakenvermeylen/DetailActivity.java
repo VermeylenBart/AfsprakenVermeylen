@@ -20,12 +20,9 @@ public class DetailActivity extends AppCompatActivity {
         TextView textDoctor = (TextView) findViewById(R.id.textDoctor);
         textDoctor.setText(appointments.get(Position).getContactName());
 
-        String Time = appointments.get(Position).getDay() + "/" + appointments.get(Position).getMonth() +
-                "/" + appointments.get(Position).getYear() + " " + appointments.get(Position).getHour() +
-                ":" + appointments.get(Position).getMinute();
 
         TextView textTime = (TextView) findViewById(R.id.textTime);
-        textTime.setText(Time);
+        textTime.setText(appointments.get(Position).getFormatedTIme("d/M/yyyy H:mm"));
 
         TextView textLocation = (TextView) findViewById(R.id.textLocation);
         textLocation.setText(appointments.get(Position).getLocation());

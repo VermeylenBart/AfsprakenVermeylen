@@ -1,6 +1,8 @@
 package be.eaict.afsprakenvermeylen;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Appointment {
 
@@ -107,5 +109,10 @@ public class Appointment {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public String getFormatedTIme(String formatDate){
+        SimpleDateFormat sdf = new SimpleDateFormat(formatDate);
+        return sdf.format(new Date(getTime()));
     }
 }
