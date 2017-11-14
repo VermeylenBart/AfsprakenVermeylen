@@ -16,9 +16,9 @@ public class ContactRepository implements IContactRepository {
     public List<Contact> getContacts() {
         List<Contact> contacts = new ArrayList<Contact>();
 
-        contacts.add(new Contact("Dr. Van Limburgen", R.drawable.contact1));
+        contacts.add(new Contact("Dr. Cryns", R.drawable.contact1));
         contacts.add(new Contact("Dr. Geneens", R.drawable.contact2));
-        contacts.add(new Contact("Dr. Cryns", R.drawable.contact3));
+        contacts.add(new Contact("Dr. Van Limburgen", R.drawable.contact3));
 
         return contacts;
     }
