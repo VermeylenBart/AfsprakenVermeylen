@@ -25,7 +25,7 @@ public class ContactRepository implements IContactRepository {
 
     public int getImage(String contactNameIn) {
         List<Contact> _contacts = getContacts();
-        int Image = R.drawable.clock_icon;
+        int Image = R.drawable.no_image;
 
         for (int i = 0; i < _contacts.size(); i++) {
             if (contactNameIn == _contacts.get(i).getContactName()) {

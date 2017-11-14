@@ -14,10 +14,7 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-
-
-        AppointmentDummyRepository _Appointments = new AppointmentDummyRepository();
-        List<Appointment> appointments = _Appointments.getAppointments();
+        List<Appointment> appointments = (new AppointmentDummyRepository()).getAppointments();
         int Position = getIntent().getIntExtra("Position", 0);
 
         ContactRepository _Contacts = new ContactRepository();

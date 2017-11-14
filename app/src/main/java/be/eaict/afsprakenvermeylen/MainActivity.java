@@ -8,6 +8,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,8 +17,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final AppointmentDummyRepository _Appointments = new AppointmentDummyRepository();
-        final NextAppointment nextAppointmentData = new NextAppointment(_Appointments.getAppointments());
+        List<Appointment> appointments = (new AppointmentDummyRepository()).getAppointments();
+        //AppointmentDummyRepository _Appointments = new AppointmentDummyRepository();
+        final NextAppointment nextAppointmentData = new NextAppointment(appointments);
 
         TextView nextAppointment = (TextView) findViewById(R.id.nextAppointment);
         nextAppointment.setText(nextAppointmentData.getNextAppointment());
@@ -29,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ListView appointmentList = (ListView) findViewById(R.id.appointmentList);
-        appointmentList.setAdapter(new AppointmentAdapter(this, _Appointments.getAppointments()));
+        appointmentList.setAdapter(new AppointmentAdapter(this,  appointments));
         appointmentList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
