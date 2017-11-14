@@ -21,22 +21,12 @@ public class DetailActivity extends AppCompatActivity {
         int Position = getIntent().getIntExtra("Position", 0);
 
         ContactRepository _Contacts = new ContactRepository();
-        List<Contact> contacts = _Contacts.getContacts();
-        int Image = R.drawable.clock_icon;
-
-        for (int i = 0; i < contacts.size(); i++) {
-            if (appointments.get(Position).getContactName() == contacts.get(i).getContactName()){
-                Image = contacts.get(i).getContactImage();
-            }
-        }
-
-        DateFormater Date = new DateFormater(appointments.get(Position).getTime());
 
         TextView textDoctor = (TextView) findViewById(R.id.textDoctor);
         textDoctor.setText(appointments.get(Position).getContactName());
 
         TextView textTime = (TextView) findViewById(R.id.textTime);
-        textTime.setText(Date.getDateFormat("d/M/yyyy HH:mm"));
+        textTime.setText(appointments.get(Position).getFormatedTIme("d/M/yyyy HH:mm"));
 
         TextView textLocation = (TextView) findViewById(R.id.textLocation);
         textLocation.setText(appointments.get(Position).getLocation());
@@ -45,6 +35,6 @@ public class DetailActivity extends AppCompatActivity {
         textReason.setText(appointments.get(Position).getReason());
 
         ImageView imagePerson = (ImageView) findViewById(R.id.detailFace);
-        imagePerson.setImageResource(Image);
+        imagePerson.setImageResource(_Contacts.getImage(appointments.get(Position).getContactName()));
     }
 }

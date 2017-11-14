@@ -25,23 +25,14 @@ public class AppointmentAdapter extends ArrayAdapter<Appointment> {
     public View getView(int position, View convertView, ViewGroup parent){
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.activity_list_items, null);
-        DateFormater Date = new DateFormater(getItem(position).getTime());
 
         ContactRepository _Contacts = new ContactRepository();
-        List<Contact> contacts = _Contacts.getContacts();
-        int Image = R.drawable.clock_icon;
-
-        for (int i = 0; i < contacts.size(); i++) {
-            if (getItem(position).getContactName() == contacts.get(i).getContactName()){
-                Image = contacts.get(i).getContactImage();
-            }
-        }
 
         TextView textDate = (TextView) view.findViewById(R.id.listDate);
-        textDate.setText(Date.getDateFormat("dd/MM/yyyy"));
+        textDate.setText(getItem(position).getFormatedTIme("dd/MM/yyyy"));
 
         TextView textTime = (TextView) view.findViewById(R.id.listTime);
-        textTime.setText(Date.getDateFormat("HH:mm"));
+        textTime.setText(getItem(position).getFormatedTIme("HH:mm"));
 
         TextView textDoctor = (TextView) view.findViewById(R.id.listDoctor);
         textDoctor.setText(getItem(position).getContactName());
@@ -50,7 +41,7 @@ public class AppointmentAdapter extends ArrayAdapter<Appointment> {
         textLocation.setText(getItem(position).getLocation());
 
         ImageView imagePerson = (ImageView) view.findViewById(R.id.listFace);
-        imagePerson.setImageResource(Image);
+        imagePerson.setImageResource(_Contacts.getImage(getItem(position).getContactName()));
 
         return view;
     }
