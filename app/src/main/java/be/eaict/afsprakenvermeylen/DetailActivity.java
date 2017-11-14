@@ -2,6 +2,7 @@ package be.eaict.afsprakenvermeylen;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -13,9 +14,13 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        final AppointmentDummyRepository _Appointments = new AppointmentDummyRepository();
+
+
+        AppointmentDummyRepository _Appointments = new AppointmentDummyRepository();
         List<Appointment> appointments = _Appointments.getAppointments();
         int Position = getIntent().getIntExtra("Position", 0);
+
+
 
         DateFormater Date = new DateFormater(appointments.get(Position).getTime());
 
@@ -30,5 +35,7 @@ public class DetailActivity extends AppCompatActivity {
 
         TextView textReason = (TextView) findViewById(R.id.textReason);
         textReason.setText(appointments.get(Position).getReason());
+
+
     }
 }

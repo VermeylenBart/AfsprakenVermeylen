@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
 
@@ -26,6 +27,16 @@ public class AppointmentAdapter extends ArrayAdapter<Appointment> {
         View view = inflater.inflate(R.layout.activity_list_items, null);
         DateFormater Date = new DateFormater(getItem(position).getTime());
 
+        ContactRepository _Contacts = new ContactRepository();
+        List<Contact> contacts = _Contacts.getContacts();
+        int Image = R.drawable.clock_icon;
+
+        for (int i = 0; i < contacts.size(); i++) {
+            if (getItem(position).getContactName() == contacts.get(i).getContactName()){
+                Image = contacts.get(i).getContactImage();
+            }
+        }
+
         TextView textDate = (TextView) view.findViewById(R.id.listDate);
         textDate.setText(Date.getDateFormat("dd/MM/yyyy"));
 
@@ -37,6 +48,9 @@ public class AppointmentAdapter extends ArrayAdapter<Appointment> {
 
         TextView textLocation = (TextView) view.findViewById(R.id.listLocation);
         textLocation.setText(getItem(position).getLocation());
+
+        ImageView imagePerson = (ImageView) view.findViewById(R.id.listFace);
+        imagePerson.setImageResource(Image);
 
         return view;
     }

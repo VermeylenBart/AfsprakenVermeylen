@@ -23,7 +23,7 @@ public class AppointmentDummyRepository implements IAppointmentsRepository {
         appointments.add(new Appointment(4, 18, 4, 2018, 9, 15, "Dr. Cryns", "AZ Klina 03.04", "Eerste echo baby"));
         appointments.add(new Appointment(4, 25, 3, 2018, 9, 15, "Dr. Van Limburgen", "AZ Klina 02.04", "MRI scan knie."));
         appointments.add(new Appointment(5, 18, 4, 2018, 9, 15, "Dr. Cryns", "AZ Klina 03.04", "Tweede echo baby"));
-        appointments.add(new Appointment(6, 30, 4, 2018, 9, 15, "Dr. Geneejnes", "AZ Monica 04.04", "Wijsheidstanden trekken"));
+        appointments.add(new Appointment(6, 30, 4, 2018, 9, 15, "Dr. Geneens", "AZ Monica 04.04", "Wijsheidstanden trekken"));
         appointments.add(new Appointment(7, 4, 5, 2018, 9, 15, "Dr. Van Limburgen", "AZ Klina 02.04", "Evaluatie MRI scan knie."));
         appointments.add(new Appointment(8, 20, 5, 2018, 9, 15, "Dr. Geneens", "AZ Monica 04.04", "Controle wijsheidstanden operatie"));
         appointments.add(new Appointment(9, 1, 6, 2018, 9, 15, "Dr. Van Limburgen", "AZ Klina 02.04", "Voorbereiding onderzoek knie prothese."));
