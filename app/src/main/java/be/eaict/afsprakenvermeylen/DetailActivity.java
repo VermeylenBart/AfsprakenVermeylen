@@ -31,7 +31,7 @@ public class DetailActivity extends AppCompatActivity {
         textTime.setText(appointments.get(Position).getFormatedTIme("d/M/yyyy HH:mm"));
 
         TextView textLocation = (TextView) findViewById(R.id.textLocation);
-        textLocation.setText(Html.fromHtml(("<u>" + appointments.get(Position).getLocation() + "</u>").toString()));
+        textLocation.setText(Html.fromHtml("<u>" + appointments.get(Position).getLocation() + "</u>"));
 
         LinearLayout linkLocation = (LinearLayout) findViewById(R.id.LocationLink);
 
