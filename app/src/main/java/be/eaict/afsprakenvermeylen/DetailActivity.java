@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -29,9 +31,11 @@ public class DetailActivity extends AppCompatActivity {
         textTime.setText(appointments.get(Position).getFormatedTIme("d/M/yyyy HH:mm"));
 
         TextView textLocation = (TextView) findViewById(R.id.textLocation);
-        textLocation.setText(appointments.get(Position).getLocation());
+        textLocation.setText(Html.fromHtml(("<u>" + appointments.get(Position).getLocation() + "</u>").toString()));
 
-        textLocation.setOnClickListener(new View.OnClickListener() {
+        LinearLayout linkLocation = (LinearLayout) findViewById(R.id.LocationLink);
+
+        linkLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + (appointments.get(Position).getLocation()).replaceAll("[0-9.]", ""));

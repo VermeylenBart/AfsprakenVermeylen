@@ -75,10 +75,11 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="15dp"
+        android:id="@+id/LocationLink">
 
         <ImageView
             android:layout_width="20dp"
@@ -88,9 +89,10 @@
 
         <TextView
             android:id="@+id/textLocation"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15dp"/>
+            android:textSize="15dp"
+            android:textColor="@color/colorPrimary"/>
     </LinearLayout>
 
 
